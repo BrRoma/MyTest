@@ -7,7 +7,10 @@ public class TestHub {
 
         Switcher switcher = new Switcher();
         Lamp lamp = new Lamp();
-        switcher.consumer=lamp;
+        Radio radio = new Radio();
+
+        switcher.addElectricityListener(lamp);
+        switcher.addElectricityListener(radio);
 
 
         switcher.switchOn();

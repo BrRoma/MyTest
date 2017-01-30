@@ -1,21 +1,27 @@
 package mypkg.it;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class Switcher {
 
-    public ElectricityConsumer consumer;
+    private List<ElectricityConsumer> listeners = new ArrayList<>();
+
+    void addElectricityListener (ElectricityConsumer listener){
+        listeners.add(listener);
+    }
+
+    void removeElectricityListener (ElectricityConsumer listener){
+        listeners.remove(listener);
+    }
+
 
     void switchOn(){
         System.out.println("ток подан...");
-        if (consumer!=null) consumer.electricictyON();
+        for (ElectricityConsumer c : listeners){
+            c.electricictyON();
+        }
 
     }
 
-    public ElectricityConsumer getConsumer() {
-        return consumer;
-    }
-
-    public void setConsumer(ElectricityConsumer consumer) {
-        this.consumer = consumer;
-    }
 }
